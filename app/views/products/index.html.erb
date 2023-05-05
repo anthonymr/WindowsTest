@@ -1,0 +1,11 @@
+<h2>Productos (<%= @products.size %>)</h2>
+
+<% @products.each do |product| %>
+  <ul>
+    <li><%= product.title %></li>
+    <li><%= product.description %></li>
+    <li><%= product.price %>$</li>
+    <li><%= link_to 'ver', product_path(product) %></li>
+  </ul>
+  <hr>
+<% end %>
