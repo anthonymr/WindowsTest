@@ -1,4 +1,5 @@
   <ul>
+    <%= image_tag @product.photo, width: 200 if @product.photo.attached? %>
     <li><%= @product.title %></li>
     <li><%= @product.description %></li>
     <li><%= @product.price %>$</li>

@@ -1,10 +1,10 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
+    @products = Product.all.order(created_at: :desc)
   end
 
   def show
-    @product = Product.find_by(id: params[:id])
+    product
   end
 
   def new
@@ -12,28 +12,40 @@ class ProductsController < ApplicationController
   end
 
   def create
-    product = Product.create(product_params)
-    redirect_to product_path(product)
+    if product.save
+      redirect_to products_path, notice: 'Product created successfully'
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
-    @product = Product.find_by(id: params[:id])
+    product
   end
 
   def update
-    product = Product.find_by(id: params[:id])
-    product.update(product_params)
-    redirect_to product_path(product)
+    if product.update(product_params)
+      redirect_to products_path, notice: 'Product updated successfully'
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
-    Product.destroy(params[:id])
-    redirect_to products_path
+    if product.destroy
+      redirect_to products_path, notice: 'El producto fue eliminado con éxito'
+    else
+      redirect_to products_path, notice: 'El producto no pudo ser eliminado'
+    end
   end
 
   private
 
   def product_params
-    params.require(:product).permit(:title, :description, :price)
+    params.require(:product).permit(:title, :description, :price, :photo)
+  end
+
+  def product
+    @product = Product.find(params[:id])
   end
 end
