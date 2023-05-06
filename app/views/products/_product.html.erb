@@ -4,15 +4,15 @@
     <li><%= product.description %></li>
     <li><%= product.price %>$</li>
     <% if show_options %>
-      <li><%= link_to 'editar', edit_product_path(product) %></li>
+      <li><%= link_to t('common.edit'), edit_product_path(product) %></li>
       <li>
-        <%= link_to 'eliminar', product_path(product), data: {
+        <%= link_to t('common.delete'), product_path(product), data: {
           turbo_method: :delete,
-          turbo_confirm: "¿Estás seguro que quieres eliminar este producto?"
+          turbo_confirm: t('common.delete_confirmation', element: product.title)
         } %>
       </li>
-      <li><%= link_to 'regresar', products_path %></li>
+      <li><%= link_to t('common.back'), products_path %></li>
     <% else %>
-      <li><%= link_to 'ver', product_path(product) %></li>
+      <li><%= link_to t('common.open'), product_path(product) %></li>
     <% end %>
   </ul>

@@ -1,4 +1,4 @@
 <div>
-  <h1>Bienvenido a la tienda</h1>
-  <%= link_to 'Inicio', products_path %> <%= link_to 'Nuevo', new_product_path%>
+  <h1><%=t('.common.app_title')%></h1>
+  <%= link_to t('.common.home'), products_path %> <%= link_to t('.common.new'), new_product_path%>
 </div>
