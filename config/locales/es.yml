@@ -1,0 +1,17 @@
+en:
+  common:
+    app_title: "Mi aplicación"
+    home: "Inicio"
+    new: "Nuevo"
+    edit: "Editar"
+    delete: "Eliminar"
+    back: "Volver"
+    open: "Abierto"
+    delete_confirmation: "Are you sure you want to delete %{element}?"
+  products:
+    new:
+      title: "New Product"
+    index:
+      title: "All Products"
+    edit:
+      title: "Edit Product"
